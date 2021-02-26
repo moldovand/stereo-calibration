@@ -1,7 +1,8 @@
 #ifndef _INCLUDED_POPT_PP_H_
 #define _INCLUDED_POPT_PP_H_
 
-#include <popt.h>
+//#include <popt.h>
+#include </usr/local/Cellar/popt/1.18/include/popt.h>
 
 class POpt{
 protected:

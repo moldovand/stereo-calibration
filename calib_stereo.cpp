@@ -26,35 +26,35 @@ void load_image_points(int board_width, int board_height, int num_imgs, float sq
     char left_img[100], right_img[100];
     sprintf(left_img, "%s%s%d.%s", leftimg_dir, leftimg_filename, i, extension);
     sprintf(right_img, "%s%s%d.%s", rightimg_dir, rightimg_filename, i, extension);
-    img1 = imread(left_img, CV_LOAD_IMAGE_COLOR);
-    img2 = imread(right_img, CV_LOAD_IMAGE_COLOR);
-    cvtColor(img1, gray1, CV_BGR2GRAY);
-    cvtColor(img2, gray2, CV_BGR2GRAY);
+    img1 = imread(left_img, IMREAD_COLOR);
+    img2 = imread(right_img, IMREAD_COLOR);
+    cvtColor(img1, gray1, COLOR_BGR2GRAY);
+    cvtColor(img2, gray2, COLOR_BGR2GRAY);
 
     bool found1 = false, found2 = false;
 
     found1 = cv::findChessboardCorners(img1, board_size, corners1,
-  CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS);
+  CALIB_CB_ADAPTIVE_THRESH | CALIB_CB_FILTER_QUADS);
     found2 = cv::findChessboardCorners(img2, board_size, corners2,
-  CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS);
+  CALIB_CB_ADAPTIVE_THRESH | CALIB_CB_FILTER_QUADS);
 
 
     if(!found1 || !found2){
       cout << "Chessboard find error!" << endl;
       cout << "leftImg: " << left_img << " and rightImg: " << right_img <<endl;
       continue;
-    } 
+    }
 
     if (found1)
     {
       cv::cornerSubPix(gray1, corners1, cv::Size(5, 5), cv::Size(-1, -1),
-  cv::TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
+  cv::TermCriteria(TermCriteria::EPS | TermCriteria::MAX_ITER, 30, 0.1));
       cv::drawChessboardCorners(gray1, board_size, corners1, found1);
     }
     if (found2)
     {
       cv::cornerSubPix(gray2, corners2, cv::Size(5, 5), cv::Size(-1, -1),
-  cv::TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
+  cv::TermCriteria(TermCriteria::EPS | TermCriteria::MAX_ITER, 30, 0.1));
       cv::drawChessboardCorners(gray2, board_size, corners2, found2);
     }
 
@@ -126,10 +126,10 @@ int main(int argc, char const *argv[])
   fsl["D"] >> D1;
   fsr["D"] >> D2;
   int flag = 0;
-  flag |= CV_CALIB_FIX_INTRINSIC;
-  
+  flag |= CALIB_FIX_INTRINSIC;
+
   cout << "Read intrinsics" << endl;
-  
+
   stereoCalibrate(object_points, left_img_points, right_img_points, K1, D1, K2, D2, img1.size(), R, T, E, F);
 
   cv::FileStorage fs1(out_file, cv::FileStorage::WRITE);
@@ -141,7 +141,7 @@ int main(int argc, char const *argv[])
   fs1 << "T" << T;
   fs1 << "E" << E;
   fs1 << "F" << F;
-  
+
   printf("Done Calibration\n");
 
   printf("Starting Rectification\n");
