@@ -9,7 +9,7 @@ Compiled Object files
 *.pch
 
 # Ignore Mac system files
-.DS_store
+.DS_Store
 
 # Ignore all png files
 *.png

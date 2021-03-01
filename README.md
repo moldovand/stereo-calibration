@@ -31,7 +31,7 @@ Once it is running, hit any key to grab frames. Images are saved with prefixes `
 
 ### Intrinsic calibration of a single camera
 
-This is only for lenses which follow the pinhole model. If you have fisheye lenses with a very wide field of view then see [this](https://github.com/sourishg/fisheye_stereo_calibration) repository. The calibration saves the camera matrix and the distortion coefficients in a YAML file. The datatype for these matrices is `Mat`.
+This is only for lenses which follow the pinhole model. The calibration saves the camera matrix and the distortion coefficients in a YAML file. The datatype for these matrices is `Mat`.
 
 Once you have compiled the sources run the following command to calibrate the intrinsics.
 
@@ -45,7 +45,7 @@ For example, the command for the test images in `calib_imgs/1/` would be
 ./calibrate -w 9 -h 6 -n 27 -s 0.02423 -d "../calib_imgs/1/" -i "left" -o "cam_left.yml" -e "jpg"
 ```
 
-### Stereo calibration for extrinisics
+### Stereo calibration for extrinsics
 
 Once you have the intrinsics calibrated for both the left and the right cameras, you can use their intrinsics to calibrate the extrinsics between them.
 
@@ -71,4 +71,16 @@ For example
 
 ```bash
 ./undistort_rectify -l ../calib_imgs/1/left1.jpg -r ../calib_imgs/1/right1.jpg -c cam_stereo.yml -L left.jpg -R right.jpg
+```
+### Disparity Map
+
+Once you have the pair of rectified images, you can proceed with the generation of the disparity map. The code implements two methods that can be selected in the command line: BM (block matching) and SGBM (semi-global BM).
+
+```bash
+./disparity -l [left_img_path] -r [right_img_path] -m [method] -D [disparity_img_path]
+```
+For example
+
+```bash
+./disparity -l left.jpg -r right.jpg -m SGBM -D disparitySGBM.jpg
 ```

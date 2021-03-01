@@ -17,10 +17,10 @@ int main(int argc, char const *argv[])
   char* disparity_filename;
 
   static struct poptOption options[] = {
-    { "leftimg_filename",'l',POPT_ARG_STRING,&leftimg_filename,0,"Left imgage path","STR" },
+    { "leftimg_filename",'l',POPT_ARG_STRING,&leftimg_filename,0,"Left image path","STR" },
     { "rightimg_filename",'r',POPT_ARG_STRING,&rightimg_filename,0,"Right image path","STR" },
-    { "method",'m',POPT_ARG_STRING,&method,0,"Disparity calculation method","STR" },
-    { "disparity_filename",'D',POPT_ARG_STRING,&disparity_filename,0,"Left undistorted imgage path","STR" },
+    { "method",'m',POPT_ARG_STRING,&method,0,"Disparity method","STR" },
+    { "disparity_filename",'D',POPT_ARG_STRING,&disparity_filename,0,"Disparity map image path","STR" },
     POPT_AUTOHELP
     { NULL, 0, 0, NULL, 0, NULL, NULL }
   };

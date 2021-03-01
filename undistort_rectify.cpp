@@ -18,10 +18,10 @@ int main(int argc, char const *argv[])
   char* rightout_filename;
 
   static struct poptOption options[] = {
-    { "leftimg_filename",'l',POPT_ARG_STRING,&leftimg_filename,0,"Left imgage path","STR" },
+    { "leftimg_filename",'l',POPT_ARG_STRING,&leftimg_filename,0,"Left image path","STR" },
     { "rightimg_filename",'r',POPT_ARG_STRING,&rightimg_filename,0,"Right image path","STR" },
     { "calib_file",'c',POPT_ARG_STRING,&calib_file,0,"Stereo calibration file","STR" },
-    { "leftout_filename",'L',POPT_ARG_STRING,&leftout_filename,0,"Left undistorted imgage path","STR" },
+    { "leftout_filename",'L',POPT_ARG_STRING,&leftout_filename,0,"Left undistorted image path","STR" },
     { "rightout_filename",'R',POPT_ARG_STRING,&rightout_filename,0,"Right undistorted image path","STR" },
     POPT_AUTOHELP
     { NULL, 0, 0, NULL, 0, NULL, NULL }
