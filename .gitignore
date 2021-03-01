@@ -8,6 +8,12 @@ Compiled Object files
 *.gch
 *.pch
 
+# Ignore Mac system files
+.DS_store
+
+# Ignore all png files
+*.png
+
 # Compiled Dynamic libraries
 *.so
 *.dylib
