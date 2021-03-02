@@ -1,0 +1,13 @@
+%YAML:1.0
+R: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [ 0.9659258262890683 0 -0.25881904510252074 0 1 0 0.25881904510252074 0 0.9659258262890683 ]
+T: !!opencv-matrix
+   rows: 3
+   cols: 1
+   dt: d
+   data: [ -28.470094961277283 0.0 0.0 ]
+Cam_Params:
+   - { sensor_x:1280, sensor_y:720, sensor_fov:145, sensor_width:3.88, sensor_height:2.18, light_energy: 3500 }

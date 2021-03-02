@@ -1,0 +1,20 @@
+%YAML:1.0
+R: !!opencv-matrix
+	rows: 3
+	cols: 3
+	dt: d
+	data: 0.8191520442889918 0 -0.573576436351046 0 1 0 0.573576436351046 0 0.8191520442889918
+T: !!opencv-matrix
+	rows: 3
+	cols: 1
+	dt: d
+	data: -17.31165651866889 0 8.072558010004208
+CamParams:
+	device_major_radius: 55
+	device_minor_radius: 40
+	sensor_resolution_x: 1280
+	sensor_resolution_y: 720
+	sensor_angular_fov: 145
+	sensor_width: 3.88
+	sensor_height: 2.18
+	light_energy: 3500

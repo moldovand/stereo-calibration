@@ -22,3 +22,6 @@ target_link_libraries(undistort_rectify ${OpenCV_LIBS} "-lpopt")
 
 add_executable(disparity disparity.cpp)
 target_link_libraries(disparity ${OpenCV_LIBS} "-lpopt")
+
+add_executable(johnny johnny.cpp)
+target_link_libraries(johnny ${OpenCV_LIBS} "-lpopt")
